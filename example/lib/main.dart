@@ -65,37 +65,45 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     final start = SizedBox(
-        width: double.maxFinite,
-        child: RaisedButton(
-          child: Text('Start'),
-          onPressed: () {
-            BackgroundLocator.registerLocationUpdate(callback,
-                settings: LocationSettings(
-                    notificationTitle: "Start Location Tracking example",
-                    notificationMsg: "Track location in background exapmle",
-                    wakeLockTime: 20,
-                    autoStop: true));
-          },
-        ));
+      width: double.maxFinite,
+      child: RaisedButton(
+        child: Text('Start'),
+        onPressed: () {
+          BackgroundLocator.registerLocationUpdate(
+            callback,
+            settings: LocationSettings(
+              notificationTitle: "Start Location Tracking example",
+              notificationMsg: "Track location in background exapmle",
+              wakeLockTime: 20,
+              autoStop: true,
+            ),
+          );
+        },
+      ),
+    );
     final stop = SizedBox(
-        width: double.maxFinite,
-        child: RaisedButton(
-          child: Text('Stop'),
-          onPressed: () {
-            BackgroundLocator.unRegisterLocationUpdate();
-          },
-        ));
+      width: double.maxFinite,
+      child: RaisedButton(
+        child: Text('Stop'),
+        onPressed: () {
+          BackgroundLocator.unRegisterLocationUpdate();
+        },
+      ),
+    );
     final clear = SizedBox(
-        width: double.maxFinite,
-        child: RaisedButton(
-          child: Text('Clear Log'),
-          onPressed: () {
-            FileManager.clearLogFile();
-            setState(() {
+      width: double.maxFinite,
+      child: RaisedButton(
+        child: Text('Clear Log'),
+        onPressed: () {
+          FileManager.clearLogFile();
+          setState(
+                () {
               logStr = '';
-            });
-          },
-        ));
+            },
+          );
+        },
+      ),
+    );
 
     final log = Text(
       logStr,
@@ -110,10 +118,11 @@ class _MyAppState extends State<MyApp> {
           width: double.maxFinite,
           padding: const EdgeInsets.all(22),
           child: SingleChildScrollView(
-              child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[start, stop, clear, log],
-          )),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[start, stop, clear, log],
+            ),
+          ),
         ),
       ),
     );
