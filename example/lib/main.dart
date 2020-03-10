@@ -74,7 +74,7 @@ class _MyAppState extends State<MyApp> {
                     notificationTitle: "Start Location Tracking example",
                     notificationMsg: "Track location in background exapmle",
                     wakeLockTime: 20,
-                    autoStop: false));
+                    autoStop: true));
           },
         ));
     final stop = SizedBox(
