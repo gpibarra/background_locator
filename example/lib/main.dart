@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
   Future<void> setLog(LocationDto data) async {
     final date = DateTime.now();
     final dateStr = '${date.hour}:${date.minute}:${date.second}';
-    FileManager.writeToLogFile(
+    await FileManager.writeToLogFile(
         '$dateStr --> ${dp(data.latitude, 4)}. ${dp(data.longitude, 4)}\n');
     final log = await FileManager.readLogFile();
     setState(() {
@@ -74,7 +74,7 @@ class _MyAppState extends State<MyApp> {
                     notificationTitle: "Start Location Tracking example",
                     notificationMsg: "Track location in background exapmle",
                     wakeLockTime: 20,
-                    autoStop: true));
+                    autoStop: false));
           },
         ));
     final stop = SizedBox(
